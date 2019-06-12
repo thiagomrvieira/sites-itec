@@ -23,10 +23,10 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body id="page-top">
         
-    @hasSection('container')
-        @yield('container')
+    @hasSection('body')
+        @yield('body')
     @endif
 
   
