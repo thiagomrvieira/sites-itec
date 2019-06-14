@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Noticia;
 
 class NoticiasController extends Controller
@@ -37,7 +36,25 @@ class NoticiasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $noticia = new noticia();
+        $noticia->titulo = $request->input('titulo');
+        $noticia->chapeu = $request->input('chapeu');
+        $noticia->intro = $request->input('intro');
+        $noticia->reporter = $request->input('reporter');
+        $noticia->texto = $request->input('texto');
+        $noticia->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
+        $noticia->autor_imagem = $request->input('autoria');
+        $noticia->categoria_id = 3;
+        $noticia->user_id = 1;
+        $noticia->status = $request->input('status');
+        $noticia->destaque = $request->input('destaque');
+
+ 
+
+
+        $noticia->save();
+
+        return redirect('/noticias');
     }
 
     /**
@@ -59,7 +76,10 @@ class NoticiasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $noticia = Noticia::find($id);
+        if (isset($noticia)) {
+            return view('noticias-editar', compact('noticia'));
+        }
     }
 
     /**
@@ -71,7 +91,24 @@ class NoticiasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $noticia = Noticia::find($id);
+        if (isset($noticia)) {
+            $noticia->titulo = $request->input('titulo');
+            $noticia->chapeu = $request->input('chapeu');
+            $noticia->intro = $request->input('intro');
+            $noticia->reporter = $request->input('reporter');
+            $noticia->texto = $request->input('texto');
+            $noticia->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
+            $noticia->autor_imagem = $request->input('autoria');
+            $noticia->categoria_id = 3;
+            $noticia->user_id = 1;
+            $noticia->status = $request->input('status');
+            $noticia->destaque = false;
+            $noticia->save();
+        }
+
+        return redirect('/noticias');
+        
     }
 
     /**
@@ -82,6 +119,10 @@ class NoticiasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $noticia = Noticia::find($id);
+        if(isset($noticia)){
+            $noticia->delete();
+        }
+        return redirect('/noticias');
     }
 }

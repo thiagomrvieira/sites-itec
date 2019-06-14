@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.template')
 
 @section('body')
     <!-- Page Wrapper -->
@@ -38,7 +38,7 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Título</th>
-                                                    <th>Publicado</th>
+                                                    <th>Status</th>
                                                     <th>Destaque</th>
                                                     <th>Categoria</th>
                                                     <th>Imagem</th>
@@ -49,11 +49,17 @@
                                                 @foreach ($noticias as $not)
                                                     <tr>
                                                         <td>{{$not->id}}</td>
-                                                        <td> <div class="texto">{{$not->titulo}}</div></td>
-                                                        <td>sim</td>
-                                                        <td>não</td>
-                                                        <td>Categoria</td>
-                                                        <td><img src={{$not->imagemCapa}} alt="capa" height="80" width="80"></td>
+                                                        <td>{{$not->titulo}}</td>
+                                                        <td>{{$not->status}}</td>
+                                                        <td>{{$not->destaque}}</td>
+                                                        <td>{{$not->categoria->categoria}}</td>
+                                                        <td>
+                                                            @if($not->imagem)
+                                                                <img src={{$not->imagem}} alt="capa" height="80" width="80">
+                                                            @else
+                                                            Sem imagem
+                                                            @endif
+                                                        </td>
                                                         <td>
                                                             <a href="noticias/editar/{{$not->id}}" class="btn btn-sm btn-primary">Editar</a>
                                                             <a href="noticias/apagar/{{$not->id}}" class="btn btn-sm btn-danger">Apagar</a>
@@ -63,6 +69,8 @@
                                             </tbody>
                                         </table>    
                                     </div>
+                                    <a href="noticias/novo" class="btn btn-sm btn-primary">Nova notícia</a>
+
                                 </div>
                             </div>
                         </div>

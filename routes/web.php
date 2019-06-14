@@ -22,7 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 // -- NOTÍCIAS --
 Route::prefix('noticias')->group(function(){
     Route::get('/', 'NoticiasController@index');
+    Route::post('/', 'NoticiasController@store');
     Route::get('/novo', 'NoticiasController@create');
+    Route::get('/editar/{id}', 'NoticiasController@edit');
+    Route::post('/editar/{id}', 'NoticiasController@update');
+    Route::get('/apagar/{id}', 'NoticiasController@destroy');
     //CATEGORIAS
     Route::get('/categorias', 'CategoriasController@index');
     Route::post('/categorias', 'CategoriasController@store');
@@ -30,3 +34,7 @@ Route::prefix('noticias')->group(function(){
     Route::get('/categorias/apagar/{id}', 'CategoriasController@destroy');
 }); 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
