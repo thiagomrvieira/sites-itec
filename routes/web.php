@@ -23,4 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('noticias')->group(function(){
     Route::get('/', 'NoticiasController@index');
     Route::get('/novo', 'NoticiasController@create');
+    //CATEGORIAS
+    Route::get('/categorias', 'CategoriasController@index');
+    Route::post('/categorias', 'CategoriasController@store');
+    Route::get('/categorias/editar/{id}', 'CategoriasController@destroy');
+    Route::get('/categorias/apagar/{id}', 'CategoriasController@destroy');
 }); 
+

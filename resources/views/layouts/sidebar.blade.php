@@ -38,6 +38,8 @@
                   <h6 class="collapse-header">Opções:</h6>
                   <a class="collapse-item" href="/noticias">Listar notícias</a>
                   <a class="collapse-item" href="/noticias/novo">Criar notícia</a>
+                  <a class="collapse-item" href="/noticias/categorias">Categorias</a>
+                  
                 </div>
               </div>
             </li>

@@ -23,40 +23,36 @@
         
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Notícias</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Categorias</h1>
                     </div>
         
                     <!-- Content Row -->
                     <div class="row">
-                        <div class="col-xl-12 col-md-6 mb-4">
+                        <div class="col-xl-7 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
-                                    <h5 class="card-title">Notícias publicadas</h5>
+                                    <h5 class="card-title">Categorias publicadas</h5>
+
                                     <div class="row no-gutters align-items-center">
                                         <table class="table table-ordered table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Título</th>
-                                                    <th>Publicado</th>
-                                                    <th>Destaque</th>
-                                                    <th>Categoria</th>
-                                                    <th>Imagem</th>
+                                                    <th>Nome da categoria</th>
+                                                    <th>Itens nessa categoria</th>
                                                     <th>Ações</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($noticias as $not)
+                                                @foreach ($categorias as $cat)
                                                     <tr>
-                                                        <td>{{$not->id}}</td>
-                                                        <td> <div class="texto">{{$not->titulo}}</div></td>
-                                                        <td>sim</td>
-                                                        <td>não</td>
-                                                        <td>Categoria</td>
-                                                        <td><img src={{$not->imagemCapa}} alt="capa" height="80" width="80"></td>
+                                                        <td>{{$cat->id}}</td>
+                                                        <td>{{$cat->categoria}}</td>
+                                                        <td></td>
+                                                        {{-- <td>{{$cat->noticias->count()}}</td> --}}
                                                         <td>
-                                                            <a href="noticias/editar/{{$not->id}}" class="btn btn-sm btn-primary">Editar</a>
-                                                            <a href="noticias/apagar/{{$not->id}}" class="btn btn-sm btn-danger">Apagar</a>
+                                                            <a href="categorias/editar/{{$cat->id}}" class="btn btn-sm btn-primary">Editar</a>
+                                                            <a href="categorias/apagar/{{$cat->id}}" class="btn btn-sm btn-danger">Apagar</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -66,20 +62,30 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Content Row -->
-                    <div class="row">
-                        <div class="col-xl-12 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="col-xl-5 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
-                                    <h5 class="card-title">Notícias não publicadas</h5>
+                                    <h5 class="card-title">Criar categoria</h5>
+                                    <hr>
+
                                     <div class="row no-gutters align-items-center">
+                                        <form action="/noticias/categorias" method="POST">
+                                            @csrf
                                         
+                                            <div class="form-group">
+                                                <label for="categoria">Nome da categoria:</label>
+                                                <input type="text" class="form-control" name="categoria" id="categoria" required>
+                                            </div>
+                                            
+                                            <button type="submit" class="btn btn-primary">Enviar</button>
+                                            
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
     
                 </div>

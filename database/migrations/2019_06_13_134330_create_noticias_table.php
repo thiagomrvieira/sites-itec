@@ -17,6 +17,10 @@ class CreateNoticiasTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('slug');
+            $table->boolean('status');
+            $table->boolean('destaque');
+            $table->integer('categoria_id')->unsigned();
+            $table->foreign('categoria_id')->references('id')->on('categoria_noticias');
             $table->string('imagem');
             $table->string('autor_imagem');
             $table->string('chapeu');
