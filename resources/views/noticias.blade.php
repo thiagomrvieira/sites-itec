@@ -55,7 +55,7 @@
                                                         <td>{{$not->categoria->categoria}}</td>
                                                         <td>
                                                             @if($not->imagem)
-                                                                <img src={{$not->imagem}} alt="capa" height="80" width="80">
+                                                                <img src="storage/{{$not->imagem}}" height="70" width="70">
                                                             @else
                                                             Sem imagem
                                                             @endif

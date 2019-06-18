@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Noticia;
+use App\CategoriaNoticia;
 
 class NoticiasController extends Controller
 {
@@ -15,6 +16,7 @@ class NoticiasController extends Controller
     public function index()
     {
         $noticias = Noticia::all();
+        
         return view ('noticias', compact('noticias'));
     }
 
@@ -25,7 +27,8 @@ class NoticiasController extends Controller
      */
     public function create()
     {
-        return view ('noticias-novo');
+        $categorias = CategoriaNoticia::all();
+        return view ('noticias-novo', compact('categorias'));
     }
 
     /**
@@ -37,21 +40,24 @@ class NoticiasController extends Controller
     public function store(Request $request)
     {
         $noticia = new noticia();
+        $noticia->categoria_id = $request->input('categoria');
         $noticia->titulo = $request->input('titulo');
         $noticia->chapeu = $request->input('chapeu');
         $noticia->intro = $request->input('intro');
         $noticia->reporter = $request->input('reporter');
         $noticia->texto = $request->input('texto');
         $noticia->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
-        $noticia->autor_imagem = $request->input('autoria');
-        $noticia->categoria_id = 3;
         $noticia->user_id = 1;
         $noticia->status = $request->input('status');
         $noticia->destaque = $request->input('destaque');
-
- 
-
-
+        if ($request->hasFile('imagem')) {
+            $path = $request->file('imagem')->store('imgNews', 'public');
+            $noticia->imagem = $path;
+            $noticia->autor_imagem = $request->input('autoria');
+        }else{
+            $noticia->imagem = null;
+            $noticia->autor_imagem = null;
+        }
         $noticia->save();
 
         return redirect('/noticias');
@@ -77,8 +83,9 @@ class NoticiasController extends Controller
     public function edit($id)
     {
         $noticia = Noticia::find($id);
+        $categorias = CategoriaNoticia::all();
         if (isset($noticia)) {
-            return view('noticias-editar', compact('noticia'));
+            return view('noticias-editar', compact('noticia', 'categorias'));
         }
     }
 
@@ -93,6 +100,7 @@ class NoticiasController extends Controller
     {
         $noticia = Noticia::find($id);
         if (isset($noticia)) {
+            $noticia->categoria_id = $request->input('categoria');
             $noticia->titulo = $request->input('titulo');
             $noticia->chapeu = $request->input('chapeu');
             $noticia->intro = $request->input('intro');
@@ -100,10 +108,13 @@ class NoticiasController extends Controller
             $noticia->texto = $request->input('texto');
             $noticia->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
             $noticia->autor_imagem = $request->input('autoria');
-            $noticia->categoria_id = 3;
             $noticia->user_id = 1;
             $noticia->status = $request->input('status');
-            $noticia->destaque = false;
+            $noticia->destaque = $request->input('destaque');
+            if ($request->hasFile('imagem')) {
+                $path = $request->file('imagem')->store('imgNews', 'public');
+                $noticia->imagem = $path;
+            }
             $noticia->save();
         }
 

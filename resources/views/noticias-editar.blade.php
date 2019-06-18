@@ -36,13 +36,28 @@
                             <div class="row no-gutters align-items-center">
                             <form action="/noticias/editar/{{$noticia->id}}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="form-group">
-                                        <label for="imagem">Imagem</label>
-                                        <input type='file' id="imagemCapa" name="imagemCapa">
+                                    <div class="row">
+                                        <div class="col-md-7 pr-1">
+                                            <div class="form-group">
+                                                <label for="imagem">Imagem</label>
+                                                <input type='file' id="imagem" name="imagem">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 pl-1">
+                                            <div class="form-group">
+                                                <label for="autoria">Autoria da imagem</label>
+                                                <input type="text" class="form-control" name="autoria" id="autoria" required value="{{$noticia->autor_imagem}}">
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div class="form-group">
-                                        <label for="autoria">Autoria da imagem</label>
-                                        <input type="text" class="form-control" name="autoria" id="autoria" required value="{{$noticia->autor_imagem}}">
+                                        <label for="categoria">Categoria</label>
+                                        <select class="form-control" id="categoria" name="categoria" >
+                                            @foreach ($categorias as $cat)
+                                                <option value="{{$cat->id}}" selected>{{$cat->categoria}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="titulo">Título</label>
@@ -69,6 +84,13 @@
                                         <select class="form-control" id="status" name="status" >
                                             <option value="1" selected>Publicado</option>
                                             <option value="0">Não publicado</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="destaque">Destaque</label>
+                                        <select class="form-control" id="destaque" name="destaque" >
+                                            <option value="1">Sim</option>
+                                            <option value="0" selected>Não</option>
                                         </select>
                                     </div>
                                     

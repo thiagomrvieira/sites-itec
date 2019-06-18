@@ -22,7 +22,7 @@ class CreateNoticiasTable extends Migration
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categoria_noticias');
             $table->string('imagem')->nullable();
-            $table->string('autor_imagem');
+            $table->string('autor_imagem')->nullable();;
             $table->string('chapeu');
             $table->mediumText('intro');
             $table->string('reporter');

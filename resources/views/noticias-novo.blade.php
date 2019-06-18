@@ -40,19 +40,25 @@
                                         <div class="col-md-7 pr-1">
                                             <div class="form-group">
                                                 <label for="imagem">Imagem</label>
-                                                <input type='file' id="imagemCapa" name="imagemCapa">
+                                                <input type='file' id="imagem" name="imagem">
                                             </div>
                                         </div>
                                         <div class="col-md-5 pl-1">
                                             <div class="form-group">
                                                 <label for="autoria">Autoria da imagem</label>
-                                                <input type="text" class="form-control" name="autoria" id="autoria" required>
+                                                <input type="text" class="form-control" name="autoria" id="autoria">
                                             </div>
                                         </div>
 
                                     </div>
-                                    
-                                    
+                                    <div class="form-group">
+                                        <label for="categoria">Categoria</label>
+                                        <select class="form-control" id="categoria" name="categoria" >
+                                            @foreach ($categorias as $cat)
+                                                <option value="{{$cat->id}}" selected>{{$cat->categoria}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <label for="titulo">Título</label>
                                         <input type="text" class="form-control" name="titulo" id="titulo" required>
