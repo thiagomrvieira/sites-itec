@@ -82,15 +82,25 @@
                                     <div class="form-group">
                                         <label for="status">Status</label>
                                         <select class="form-control" id="status" name="status" >
-                                            <option value="1" selected>Publicado</option>
-                                            <option value="0">Não publicado</option>
+                                            @if ($noticia->status == true)
+                                                <option value="1" selected>Publicado</option>
+                                                <option value="0">Não publicado</option>
+                                            @else
+                                                <option value="1">Publicado</option>
+                                                <option value="0" selected>Não publicado</option>
+                                            @endif
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="destaque">Destaque</label>
                                         <select class="form-control" id="destaque" name="destaque" >
-                                            <option value="1">Sim</option>
-                                            <option value="0" selected>Não</option>
+                                            @if ($noticia->destaque == true)
+                                                <option value="1" selected>Sim</option>
+                                                <option value="0">Não</option>
+                                            @else
+                                                <option value="1">Sim</option>
+                                                <option value="0" selected>Não</option>
+                                            @endif
                                         </select>
                                     </div>
                                     

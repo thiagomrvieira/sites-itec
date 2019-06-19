@@ -47,11 +47,24 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($noticias as $not)
+                                                    @if ($not->status == true)
                                                     <tr>
                                                         <td>{{$not->id}}</td>
                                                         <td>{{$not->titulo}}</td>
-                                                        <td>{{$not->status}}</td>
-                                                        <td>{{$not->destaque}}</td>
+                                                        <td>
+                                                            @if ($not->status == true)
+                                                                Publicado        
+                                                            @else
+                                                                Não publicado
+                                                            @endif    
+                                                        </td>
+                                                        <td>
+                                                            @if ($not->destaque == true)
+                                                                Sim        
+                                                            @else
+                                                                Não
+                                                            @endif
+                                                        </td>
                                                         <td>{{$not->categoria->categoria}}</td>
                                                         <td>
                                                             @if($not->imagem)
@@ -65,6 +78,8 @@
                                                             <a href="noticias/apagar/{{$not->id}}" class="btn btn-sm btn-danger">Apagar</a>
                                                         </td>
                                                     </tr>
+                                                    @endif
+                                                    
                                                 @endforeach
                                             </tbody>
                                         </table>    
@@ -83,7 +98,56 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Notícias não publicadas</h5>
                                     <div class="row no-gutters align-items-center">
-                                        
+                                        <table class="table table-ordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Título</th>
+                                                    <th>Status</th>
+                                                    <th>Destaque</th>
+                                                    <th>Categoria</th>
+                                                    <th>Imagem</th>
+                                                    <th>Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($noticias as $not)
+                                                    @if ($not->status == false)
+                                                    <tr>
+                                                        <td>{{$not->id}}</td>
+                                                        <td>{{$not->titulo}}</td>
+                                                        <td>
+                                                            @if ($not->status == true)
+                                                                Publicado        
+                                                            @else
+                                                                Não publicado
+                                                            @endif    
+                                                        </td>
+                                                        <td>
+                                                            @if ($not->destaque == true)
+                                                                Sim        
+                                                            @else
+                                                                Não
+                                                            @endif
+                                                        </td>
+                                                        <td>{{$not->categoria->categoria}}</td>
+                                                        <td>
+                                                            @if($not->imagem)
+                                                                <img src="storage/{{$not->imagem}}" height="70" width="70">
+                                                            @else
+                                                            Sem imagem
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <a href="noticias/editar/{{$not->id}}" class="btn btn-sm btn-primary">Editar</a>
+                                                            <a href="noticias/apagar/{{$not->id}}" class="btn btn-sm btn-danger">Apagar</a>
+                                                        </td>
+                                                    </tr>
+                                                    @endif
+                                                    
+                                                @endforeach
+                                            </tbody>
+                                        </table>    
                                     </div>
                                 </div>
                             </div>

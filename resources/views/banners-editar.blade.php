@@ -46,13 +46,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="texto">Texto</label>
-                                    <textarea class="form-control" id="texto" name="texto" rows="7" required>{!!$banner->titulo!!}</textarea>
+                                    <textarea class="form-control" id="texto" name="texto" rows="7" required>{!!$banner->texto!!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select class="form-control" id="status" name="status" >
-                                        <option value="1" selected>Publicado</option>
-                                        <option value="0">Não publicado</option>
+                                        @if ($banner->status == true)
+                                            <option value="1" selected>Publicado</option>
+                                            <option value="0">Não publicado</option>
+                                        @else
+                                            <option value="1">Publicado</option>
+                                            <option value="0" selected>Não publicado</option>
+                                        @endif
+                                        
                                     </select>
                                 </div>
 
