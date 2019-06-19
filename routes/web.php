@@ -34,6 +34,16 @@ Route::prefix('noticias')->group(function(){
     Route::get('/categorias/apagar/{id}', 'CategoriasController@destroy');
 }); 
 
+// -- BANNERS --
+Route::prefix('banners')->group(function(){
+    Route::get('/', 'BannersController@index');
+    Route::post('/', 'BannersController@store');
+    Route::get('/novo', 'BannersController@create');
+    Route::get('/editar/{id}', 'BannersController@edit');
+    Route::post('/editar/{id}', 'BannersController@update');
+    Route::get('/apagar/{id}', 'BannersController@destroy');
+    
+}); 
 
 Auth::routes();
 
