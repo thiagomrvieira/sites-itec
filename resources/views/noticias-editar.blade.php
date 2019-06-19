@@ -46,7 +46,7 @@
                                         <div class="col-md-5 pl-1">
                                             <div class="form-group">
                                                 <label for="autoria">Autoria da imagem</label>
-                                                <input type="text" class="form-control" name="autoria" id="autoria" required value="{{$noticia->autor_imagem}}">
+                                                <input type="text" class="form-control" name="autoria" id="autoria" value="{{$noticia->autor_imagem}}">
                                             </div>
                                         </div>
 
@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="texto">Texto</label>
-                                        <textarea class="form-control" id="texto" name="texto" rows="7" required>{{$noticia->texto}}</textarea>  
+                                        <textarea class="form-control" id="texto" name="texto" rows="7" required>{!!$noticia->texto!!}</textarea>  
                                     </div>
                                     <div class="form-group">
                                         <label for="status">Status</label>

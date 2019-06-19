@@ -38,3 +38,6 @@ Route::prefix('noticias')->group(function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('summernote',array('as'=>'summernote.get','uses'=>'FileController@getSummernote'));
+Route::post('summernote',array('as'=>'summernote.post','uses'=>'FileController@postSummernote')); 
