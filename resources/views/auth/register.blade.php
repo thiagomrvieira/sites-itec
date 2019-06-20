@@ -56,7 +56,7 @@
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="login.html">Fazer login</a>
+                <a class="small" href="/login">Fazer login</a>
                 
               </div>
             </div>
