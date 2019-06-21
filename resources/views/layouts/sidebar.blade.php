@@ -24,7 +24,7 @@
       
             <!-- Heading -->
             <div class="sidebar-heading">
-              Interface
+              Conteúdo
             </div>
       
             <!-- Nav Item - Pages Collapse Menu -->
@@ -57,6 +57,13 @@
                   <a class="collapse-item" href="/banners/novo">Criar banner</a>
                 </div>
               </div>
+            </li>
+
+            <!-- Nav Item - Programas -->
+            <li class="nav-item">
+              <a class="nav-link" href="/programas">
+                <i class="fas fa-tasks"></i>
+                <span>Programas do governo</span></a>
             </li>
       
             <!-- Divider -->

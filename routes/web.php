@@ -45,6 +45,16 @@ Route::prefix('banners')->middleware('auth')->group(function(){
     
 }); 
 
+// -- PROGRAMAS --
+Route::prefix('programas')->middleware('auth')->group(function(){
+    Route::get('/', 'ProgramasController@index');
+    Route::post('/', 'ProgramasController@store');
+    Route::get('/editar/{id}', 'ProgramasController@edit');
+    Route::post('/editar/{id}', 'ProgramasController@update');
+    Route::get('/apagar/{id}', 'ProgramasController@destroy');
+    
+}); 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
