@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // -- NOTÍCIAS --
-Route::prefix('noticias')->group(function(){
+Route::prefix('noticias')->middleware('auth')->group(function(){
     Route::get('/', 'NoticiasController@index');
     Route::post('/', 'NoticiasController@store');
     Route::get('/novo', 'NoticiasController@create');
@@ -35,7 +35,7 @@ Route::prefix('noticias')->group(function(){
 }); 
 
 // -- BANNERS --
-Route::prefix('banners')->group(function(){
+Route::prefix('banners')->middleware('auth')->group(function(){
     Route::get('/', 'BannersController@index');
     Route::post('/', 'BannersController@store');
     Route::get('/novo', 'BannersController@create');
