@@ -36,18 +36,31 @@
                             <div class="row no-gutters align-items-center">
                                 <form action="/banners" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    
+                                    <div class="row">
+                                        <div class="col-md-5 pr-1">
+                                            <div class="form-group">
+                                                <label for="imagem">Imagem principal</label>
+                                                <input type='file' id="imagem" name="imagem" required>
+                                            </div>
+                                        </div>    
+                                        <div class="col-md-5 pl-1">    
+                                            <div class="form-group">
+                                                <label for="imagem-mbl">Mobile para versão mobile</label>
+                                                <input type='file' id="imagem-mbl" name="imagem-mbl">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="titulo">Título</label>
                                         <input type="text" class="form-control" name="titulo" id="titulo" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="imagem">Imagem</label>
-                                        <input type='file' id="imagem" name="imagem" required>
+                                        <label for="subtitulo">Subtítulo</label>
+                                        <input type="text" class="form-control" name="subtitulo" id="subtitulo">
                                     </div>
                                     <div class="form-group">
-                                        <label for="texto">Texto</label>
-                                        <textarea class="form-control" id="texto" name="texto" rows="7" required></textarea>
+                                        <label for="link">Link</label>
+                                        <input type="text" class="form-control" name="link" id="link">
                                     </div>
                                     <div class="form-group">
                                         <label for="status">Status</label>

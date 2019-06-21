@@ -34,38 +34,53 @@
                         <div class="card border-left-success shadow h-100 py-2">
                             <div class="card-body">
                             <div class="row no-gutters align-items-center">
-                            <form action="/banners/editar/{{$banner->id}}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="titulo">Título</label>
+                                <form action="/banners/editar/{{$banner->id}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-5 pr-1">
+                                            <div class="form-group">
+                                                <label for="imagem">Imagem principal</label>
+                                                <input type='file' id="imagem" name="imagem">
+                                            </div>
+                                        </div>    
+                                        <div class="col-md-5 pl-1">    
+                                            <div class="form-group">
+                                                <label for="imagem-mbl">Mobile para versão mobile</label>
+                                                <input type='file' id="imagem-mbl" name="imagem-mbl">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="titulo">Título</label>
                                     <input type="text" class="form-control" name="titulo" id="titulo" required value="{{$banner->titulo}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="imagem">Imagem</label>
-                                <input type='file' id="imagem" name="imagem" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="texto">Texto</label>
-                                    <textarea class="form-control" id="texto" name="texto" rows="7" required>{!!$banner->texto!!}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <select class="form-control" id="status" name="status" >
-                                        @if ($banner->status == true)
-                                            <option value="1" selected>Publicado</option>
-                                            <option value="0">Não publicado</option>
-                                        @else
-                                            <option value="1">Publicado</option>
-                                            <option value="0" selected>Não publicado</option>
-                                        @endif
-                                        
-                                    </select>
-                                </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="subtitulo">Subtítulo</label>
+                                        <input type="text" class="form-control" name="subtitulo" id="subtitulo" value="{{$banner->subtitulo}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="link">Link</label>
+                                        <input type="text" class="form-control" name="link" id="link" value="{{$banner->link}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <select class="form-control" id="status" name="status" >
+                                            @if ($banner->status == true)
+                                                <option value="1" selected>Publicado</option>
+                                                <option value="0">Não publicado</option>                                             
+                                            @else
+                                                <option value="1">Publicado</option>
+                                                <option value="0" selected>Não publicado</option> 
+                                            @endif
+                                            
+                                            
+                                        </select>
+                                    </div>
 
 
-                                <button type="submit" class="btn btn-primary">Enviar</button>
-                                <input type="button" name="Cancel" class="btn btn-danger" value="Cancel" onclick="window.location = '/banners' " />
-                            </form>
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <input type="button" name="Cancel" class="btn btn-danger" value="Cancel" onclick="window.location = '/banners' " />
+                                </form>
                             </div>
                             </div>
                         </div>

@@ -37,12 +37,17 @@ class BannersController extends Controller
     public function store(Request $request)
     {
         $banner = new Banner();
-        $banner->titulo = $request->input('titulo');
-        $banner->texto = $request->input('texto');
-        $banner->user_id = 1;
-        $banner->status = $request->input('status');
         $path = $request->file('imagem')->store('imgBanners', 'public');
         $banner->imagem = $path;
+        if ($request->hasFile('imagem-mbl')) {
+            $path = $request->file('imagem-mbl')->store('imgBanners', 'public');
+            $banner->imagem_mbl = $path;
+        }
+        $banner->titulo = $request->input('titulo');
+        $banner->subtitulo = $request->input('subtitulo');
+        $banner->link = $request->input('link');
+        $banner->user_id = 1;
+        $banner->status = $request->input('status');
         $banner->save();
 
         return redirect('/banners');
@@ -84,32 +89,25 @@ class BannersController extends Controller
     {
         $banner = Banner::find($id);
         if (isset($banner)) {
-            $banner->titulo = $request->input('titulo');
-            $banner->texto = $request->input('texto');
-            $banner->user_id = 1;
-            $banner->status = $request->input('status');
             if ($request->hasFile('imagem')) {
                 $path = $request->file('imagem')->store('imgBanners', 'public');
                 $banner->imagem = $path;
             }
+            
+            if ($request->hasFile('imagem-mbl')) {
+                $path = $request->file('imagem-mbl')->store('imgBanners', 'public');
+                $banner->imagem_mbl = $path;
+            }
+            $banner->titulo = $request->input('titulo');
+            $banner->subtitulo = $request->input('subtitulo');
+            $banner->link = $request->input('link');
+            $banner->user_id = 1;
+            $banner->status = $request->input('status');
             $banner->save();
         }
         return redirect('/banners');
         
-        // $banner = Banner::find($id);
-        // if (isset($banner)) {
-        //     $banner->titulo = $request->input('titulo');
-        //     $banner->texto = $request->input('texto');
-        //     $banner->user_id = 1;
-        //     $banner->status = $request->input('status');
-        //     if ($request->hasFile('imagem')) {
-        //         $path = $request->file('imagem')->store('imgBanners', 'public');
-        //         $banner->imagem = $path;
-        //     }
-        //     $banner->save();
-        // }
-        // return redirect('/banners');
-
+    
     }
 
     /**
