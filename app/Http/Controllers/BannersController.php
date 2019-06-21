@@ -46,7 +46,7 @@ class BannersController extends Controller
         $banner->titulo = $request->input('titulo');
         $banner->subtitulo = $request->input('subtitulo');
         $banner->link = $request->input('link');
-        $banner->user_id = 1;
+        $banner->user_id = auth()->user()->id;
         $banner->status = $request->input('status');
         $banner->save();
 
@@ -101,7 +101,6 @@ class BannersController extends Controller
             $banner->titulo = $request->input('titulo');
             $banner->subtitulo = $request->input('subtitulo');
             $banner->link = $request->input('link');
-            $banner->user_id = 1;
             $banner->status = $request->input('status');
             $banner->save();
         }
