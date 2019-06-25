@@ -53,6 +53,17 @@ Route::prefix('programas')->middleware('auth')->group(function(){
     Route::post('/editar/{id}', 'ProgramasController@update');
     Route::get('/apagar/{id}', 'ProgramasController@destroy');
     
+});
+
+// -- VÍDEOS --
+Route::prefix('videos')->middleware('auth')->group(function(){
+    Route::get('/', 'VideosController@index');
+    Route::get('/novo', 'VideosController@create');
+    Route::post('/', 'VideosController@store');
+    Route::get('/editar/{id}', 'VideosController@edit');
+    Route::post('/editar/{id}', 'VideosController@update');
+    Route::get('/apagar/{id}', 'VideosController@destroy');
+    
 }); 
 
 Auth::routes();

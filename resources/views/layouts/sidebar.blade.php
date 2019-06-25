@@ -65,6 +65,13 @@
                 <i class="fas fa-tasks"></i>
                 <span>Programas do governo</span></a>
             </li>
+
+            <!-- Nav Item - Videos -->
+            <li class="nav-item">
+              <a class="nav-link" href="/videos">
+                <i class="fab fa-youtube"></i>
+                <span>Vídeos</span></a>
+            </li>
       
             <!-- Divider -->
             <hr class="sidebar-divider">
