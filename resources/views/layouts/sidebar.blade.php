@@ -43,6 +43,28 @@
                 </div>
               </div>
             </li>
+
+            <!-- Nav Item - fotos -->
+            <li class="nav-item">
+              <a class="nav-link" href="/fotos">
+                <i class="far fa-images"></i>
+                <span>Fotos</span></a>
+            </li>
+
+            <!-- Nav Item - Videos -->
+            <li class="nav-item">
+              <a class="nav-link" href="/videos">
+                <i class="fab fa-youtube"></i>
+                <span>Vídeos</span></a>
+            </li>
+      
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+      
+            <!-- Heading -->
+            <div class="sidebar-heading">
+              Componentes
+            </div>
       
             <!-- Nav Item - Banners Collapse Menu -->
             <li class="nav-item">
@@ -58,29 +80,13 @@
                 </div>
               </div>
             </li>
-
+  
             <!-- Nav Item - Programas -->
             <li class="nav-item">
               <a class="nav-link" href="/programas">
                 <i class="fas fa-tasks"></i>
                 <span>Programas do governo</span></a>
             </li>
-
-            <!-- Nav Item - Videos -->
-            <li class="nav-item">
-              <a class="nav-link" href="/videos">
-                <i class="fab fa-youtube"></i>
-                <span>Vídeos</span></a>
-            </li>
-      
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-      
-            <!-- Heading -->
-            <div class="sidebar-heading">
-              Addons
-            </div>
-      
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -99,20 +105,6 @@
                   <a class="collapse-item" href="blank.html">Blank Page</a>
                 </div>
               </div>
-            </li>
-      
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-              <a class="nav-link" href="charts.html">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
-            </li>
-      
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-              <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
             </li>
       
             <!-- Divider -->

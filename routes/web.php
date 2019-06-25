@@ -55,6 +55,17 @@ Route::prefix('programas')->middleware('auth')->group(function(){
     
 });
 
+// -- FOTOS --
+Route::prefix('fotos')->middleware('auth')->group(function(){
+    Route::get('/', 'FotosController@index');
+    Route::get('/novo', 'FotosController@create');
+    Route::post('/', 'FotosController@store');
+    Route::get('/editar/{id}', 'FotosController@edit');
+    Route::post('/editar/{id}', 'FotosController@update');
+    Route::get('/apagar/{id}', 'FotosController@destroy');
+    
+}); 
+
 // -- VÍDEOS --
 Route::prefix('videos')->middleware('auth')->group(function(){
     Route::get('/', 'VideosController@index');
