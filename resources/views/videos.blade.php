@@ -38,24 +38,38 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Título</th>
-                                                    <th>Subtítulo</th>
                                                     <th>Link</th>
+                                                    <th>Status</th>
+                                                    <th>Imagem</th>
+                                                    <!-- <th>Conteúdo</th> -->
+                                                    <th>Data de publicação</th>
                                                     <th>Ações</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($videos as $vid)
+                                                @foreach ($videos as $video)
+                                                    @if ($video->status == true)
                                                     <tr>
-                                                        <td>{{$vid->id}}</td>
-                                                        <td>{{$vid->titulo}}</td>
-                                                        <td>{{$vid->subtitulo}}</td>
-                                                        <td>{{$vid->link}}</td>
+                                                        <td>{{$video->id}}</td>
+                                                        <td>{{$video->titulo}}</td>
+                                                        <td>{{$video->link}}</td>
+                                                        <td>
+                                                            @if ($video->status == true)
+                                                                Publicado        
+                                                            @else
+                                                                Não publicado
+                                                            @endif    
+                                                        </td>
+                                                        <td><img src="/storage/{{$video->imagem}}" height="70" width="70"></td>
+                                                        <!-- <td>{!!$video->texto!!}</td> -->
+                                                        <td>{{ \Carbon\Carbon::parse($video->criado_em)->format('d/m/Y H:i:s')}}</td>
 
                                                         <td>
-                                                            <a href="videos/editar/{{$vid->id}}" class="btn btn-sm btn-primary">Editar</a>
-                                                            <a href="videos/apagar/{{$vid->id}}" class="btn btn-sm btn-danger">Apagar</a>
+                                                            <a href="videos/editar/{{$video->id}}" class="btn btn-sm btn-primary">Editar</a>
+                                                            <a href="videos/apagar/{{$video->id}}" class="btn btn-sm btn-danger">Apagar</a>
                                                         </td>
                                                     </tr>
+                                                    @endif
                                                     
                                                 @endforeach
                                             </tbody>
@@ -68,7 +82,60 @@
                         </div>
                     </div>
 
-                    
+                    <!-- Content Row -->
+                    <div class="row">
+                        <div class="col-xl-12 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Vídeos não publicados</h5>
+                                    <div class="row no-gutters align-items-center">
+                                        <table class="table table-ordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Título</th>
+                                                    <th>Link</th>
+                                                    <th>Status</th>
+                                                    <th>Imagem</th>
+                                                    <!-- <th>Conteúdo</th> -->
+                                                    <th>Data de publicação</th>
+                                                    <th>Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($videos as $video)
+                                                    @if ($video->status == false)
+                                                    <tr>
+                                                        <td>{{$video->id}}</td>
+                                                        <td>{{$video->titulo}}</td>
+                                                        <td>{{$video->link}}</td>
+
+                                                        <td>
+                                                            @if ($video->status == true)
+                                                                Publicado        
+                                                            @else
+                                                                Não publicado
+                                                            @endif    
+                                                        </td>
+                                                        <td><img src="/storage/{{$video->imagem}}" height="70" width="70"></td>
+                                                        <!-- <td>{!!$video->texto!!}</td> -->
+                                                        <td>{{ \Carbon\Carbon::parse($video->criado_em)->format('d/m/Y H:i:s')}}</td>
+
+                                                        <td>
+                                                            <a href="videos/editar/{{$video->id}}" class="btn btn-sm btn-primary">Editar</a>
+                                                            <a href="videos/apagar/{{$video->id}}" class="btn btn-sm btn-danger">Apagar</a>
+                                                        </td>
+                                                    </tr>
+                                                    @endif
+                                                    
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
     
                 </div>
                 <!-- /.container-fluid -->

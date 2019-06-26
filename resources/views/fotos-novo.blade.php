@@ -63,7 +63,7 @@
 
 
                                     <button type="submit" class="btn btn-primary">Enviar</button>
-                                    <input type="button" name="Cancel" class="btn btn-danger" value="Cancel" onclick="window.location = '/noticias' " />
+                                    <input type="button" name="Cancel" class="btn btn-danger" value="Cancel" onclick="window.location = '/fotos' " />
                                 </form>
                             </div>
                             </div>

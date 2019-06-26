@@ -36,12 +36,19 @@ class VideosController extends Controller
      */
     public function store(Request $request)
     {
-        $video =  new Video();
+        $video = new Video();
         $video->titulo = $request->input('titulo');
-        $video->subtitulo = $request->input('subtitulo');
         $video->link = $request->input('link');
+        $video->texto = $request->input('texto');
+        $video->status = $request->input('status');
+        $path = $request->file('imagem')->store('imgVideo', 'public');
+        $video->imagem = $path;
+        $video->criado_em = \Carbon\Carbon::now();
         $video->save();
         return redirect('videos');
+
+        
+        
 
     }
 
@@ -79,11 +86,19 @@ class VideosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $video =  Video::find($id);
+        $video = Video::find($id);
         if (isset($video)) {
             $video->titulo = $request->input('titulo');
-            $video->subtitulo = $request->input('subtitulo');
-            $video->link = $request->input('link');
+            $video->texto = $request->input('texto');
+            $video->status = $request->input('status');
+            if ($request->hasFile('imagem')) {
+                $path = $request->file('imagem')->store('imgVideo', 'public');
+                $video->imagem = $path;
+            }
+            if ($request->input('data')) { 
+                $video->criado_em = $request->input('data');
+            }
+            
             $video->save();
         }
         return redirect('videos');

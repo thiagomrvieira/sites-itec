@@ -31,38 +31,52 @@
             
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-12 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <form action="/videos" method="POST">
-                                            @csrf
-                                            
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <form action="/videos" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-7 pr-1">
                                             <div class="form-group">
-                                                <label for="titulo">Título</label>
-                                                <input type="text" class="form-control" name="titulo" id="titulo" required>
+                                                <label for="imagem">Imagem</label>
+                                                <input type='file' id="imagem" name="imagem" required>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="subtitulo">Subtítulo</label>
-                                                <input type="text" class="form-control" name="subtitulo" id="subtitulo">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="link">Link</label>
-                                                <input type="text" class="form-control" name="link" id="link" required>
-                                            </div>
-
-                                            <button type="submit" class="btn btn-primary">Enviar</button>
-                                            <input type="button" name="Cancel" class="btn btn-danger" value="Cancel" onclick="window.location = '/videos' " />
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="titulo">Título</label>
+                                        <input type="text" class="form-control" name="titulo" id="titulo" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="link">Link</label>
+                                        <input type="text" class="form-control" name="link" id="link">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="texto">Texto</label>
+                                        <textarea class="form-control" id="texto" name="texto" rows="7" required></textarea>  
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <select class="form-control" id="status" name="status" >
+                                            <option value="1" selected>Publicado</option>
+                                            <option value="0">Não publicado</option>
+                                        </select>
+                                    </div>
+
+
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <input type="button" name="Cancel" class="btn btn-danger" value="Cancel" onclick="window.location = '/videos' " />
+                                </form>
                             </div>
+                            </div>
+                        </div>
                         </div>
             
                         
 
                     </div>
-
-                    
     
                 </div>
                 <!-- /.container-fluid -->
