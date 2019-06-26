@@ -12,7 +12,7 @@
           <div class="col-lg-7">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Crie uma conta!</h1>
+                <h1 class="h4 text-gray-900 mb-4">Crie uma nova conta!</h1>
               </div>
               <form class="user" method="POST" action="{{ route('register') }}">
                 @csrf
@@ -56,7 +56,7 @@
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="/login">Fazer login</a>
+                <a class="small" href="/">Voltar</a>
                 
               </div>
             </div>
