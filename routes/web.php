@@ -77,6 +77,17 @@ Route::prefix('videos')->middleware('auth')->group(function(){
     
 }); 
 
+// -- SIC --
+Route::prefix('sic')->middleware('auth')->group(function(){
+    Route::get('/', 'SicController@index');
+    Route::get('/novo', 'SicController@create');
+    Route::post('/', 'SicController@store');
+    Route::get('/editar/{id}', 'SicController@edit');
+    Route::post('/editar/{id}', 'SicController@update');
+    Route::get('/apagar/{id}', 'SicController@destroy');
+    
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
