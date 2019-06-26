@@ -26,7 +26,7 @@ class FotosController extends Controller
      */
     public function create()
     {
-        //
+        return view('fotos-novo');
     }
 
     /**
@@ -37,7 +37,14 @@ class FotosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $foto = new Foto();
+        $foto->titulo = $request->input('titulo');
+        $foto->texto = $request->input('texto');
+        $foto->status = $request->input('status');
+        $path = $request->file('imagem')->store('imgFotos', 'public');
+        $foto->imagem = $path;
+        $foto->save();
+        return redirect('fotos');
     }
 
     /**
@@ -59,7 +66,11 @@ class FotosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $foto = Foto::find($id);
+        if (isset($foto)) {
+            return view('fotos-editar', compact('foto'));
+        }
+        return redirect('fotos');
     }
 
     /**
@@ -71,7 +82,18 @@ class FotosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $foto = Foto::find($id);
+        if (isset($foto)) {
+            $foto->titulo = $request->input('titulo');
+            $foto->texto = $request->input('texto');
+            $foto->status = $request->input('status');
+            if ($request->hasFile('imagem')) {
+                $path = $request->file('imagem')->store('imgFotos', 'public');
+                $foto->imagem = $path;
+            }
+            $foto->save();
+        }
+        return redirect('fotos');
     }
 
     /**
@@ -82,6 +104,10 @@ class FotosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $foto = Foto::find($id);
+        if (isset($foto)) {
+            $foto->delete();
+        }
+        return redirect('fotos');
     }
 }

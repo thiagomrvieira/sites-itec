@@ -57,11 +57,11 @@
                                                                 Não publicado
                                                             @endif    
                                                         </td>
-                                                        <td>{{$foto->imagem}}</td>
-                                                        <td>{{$foto->texto}}</td>
+                                                        <td><img src="/storage/{{$foto->imagem}}" height="70" width="70"></td>
+                                                        <td>{!!$foto->texto!!}</td>
                                                         <td>
-                                                            <a href="noticias/editar/{{$foto->id}}" class="btn btn-sm btn-primary">Editar</a>
-                                                            <a href="noticias/apagar/{{$foto->id}}" class="btn btn-sm btn-danger">Apagar</a>
+                                                            <a href="fotos/editar/{{$foto->id}}" class="btn btn-sm btn-primary">Editar</a>
+                                                            <a href="fotos/apagar/{{$foto->id}}" class="btn btn-sm btn-danger">Apagar</a>
                                                         </td>
                                                     </tr>
                                                     @endif
@@ -97,22 +97,22 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($fotos as $foto)
-                                                    @if ($foto->status == true)
+                                                    @if ($foto->status == false)
                                                     <tr>
                                                         <td>{{$foto->id}}</td>
                                                         <td>{{$foto->titulo}}</td>
                                                         <td>
-                                                            @if ($foto->status == false)
+                                                            @if ($foto->status == true)
                                                                 Publicado        
                                                             @else
                                                                 Não publicado
                                                             @endif    
                                                         </td>
-                                                        <td>{{$foto->imagem}}</td>
-                                                        <td>{{$foto->texto}}</td>
+                                                        <td><img src="/storage/{{$foto->imagem}}" height="70" width="70"></td>
+                                                        <td>{!!$foto->texto!!}</td>
                                                         <td>
-                                                            <a href="noticias/editar/{{$foto->id}}" class="btn btn-sm btn-primary">Editar</a>
-                                                            <a href="noticias/apagar/{{$foto->id}}" class="btn btn-sm btn-danger">Apagar</a>
+                                                            <a href="fotos/editar/{{$foto->id}}" class="btn btn-sm btn-primary">Editar</a>
+                                                            <a href="fotos/apagar/{{$foto->id}}" class="btn btn-sm btn-danger">Apagar</a>
                                                         </td>
                                                     </tr>
                                                     @endif
