@@ -43,6 +43,7 @@ class FotosController extends Controller
         $foto->status = $request->input('status');
         $path = $request->file('imagem')->store('imgFotos', 'public');
         $foto->imagem = $path;
+        $foto->criado_em = \Carbon\Carbon::now();
         $foto->save();
         return redirect('fotos');
     }
@@ -91,6 +92,10 @@ class FotosController extends Controller
                 $path = $request->file('imagem')->store('imgFotos', 'public');
                 $foto->imagem = $path;
             }
+            if ($request->input('data')) { 
+                $foto->criado_em = $request->input('data');
+            }
+            
             $foto->save();
         }
         return redirect('fotos');

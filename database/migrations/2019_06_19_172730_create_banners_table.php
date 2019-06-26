@@ -21,8 +21,6 @@ class CreateBannersTable extends Migration
             $table->string('subtitulo');
             $table->boolean('status');
             $table->string('link')->nullable();
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

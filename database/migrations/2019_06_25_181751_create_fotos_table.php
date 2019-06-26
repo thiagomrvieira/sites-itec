@@ -19,6 +19,7 @@ class CreateFotosTable extends Migration
             $table->boolean('status');
             $table->string('imagem');
             $table->longText('texto');
+            $table->dateTime('criado_em');	
             $table->timestamps();
         });
     }

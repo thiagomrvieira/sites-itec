@@ -27,8 +27,7 @@ class CreateNoticiasTable extends Migration
             $table->mediumText('intro');
             $table->string('reporter');
             $table->longText('texto');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->dateTime('criado_em');	
             $table->timestamps();
         });
     }

@@ -103,6 +103,10 @@
                                             @endif
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="data">Editar data de publicação (<span style="color:red; font-style:italic">preencher apenas em caso de alteração</span>)</label>
+                                        <input class="form-control" type="datetime-local" id="data" name="data">
+                                    </div>
                                     
                                     <button type="submit" class="btn btn-primary">Enviar</button>
                                     <input type="button" name="Cancel" class="btn btn-danger" value="Cancel" onclick="window.location = '/noticias' " />

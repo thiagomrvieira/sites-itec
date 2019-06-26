@@ -40,7 +40,8 @@
                                                     <th>Título</th>
                                                     <th>Status</th>
                                                     <th>Imagem</th>
-                                                    <th>Conteúdo</th>
+                                                    <!-- <th>Conteúdo</th> -->
+                                                    <th>Data de publicação</th>
                                                     <th>Ações</th>
                                                 </tr>
                                             </thead>
@@ -58,7 +59,9 @@
                                                             @endif    
                                                         </td>
                                                         <td><img src="/storage/{{$foto->imagem}}" height="70" width="70"></td>
-                                                        <td>{!!$foto->texto!!}</td>
+                                                        <!-- <td>{!!$foto->texto!!}</td> -->
+                                                        <td>{{ \Carbon\Carbon::parse($foto->criado_em)->format('d/m/Y H:i:s')}}</td>
+
                                                         <td>
                                                             <a href="fotos/editar/{{$foto->id}}" class="btn btn-sm btn-primary">Editar</a>
                                                             <a href="fotos/apagar/{{$foto->id}}" class="btn btn-sm btn-danger">Apagar</a>
@@ -91,7 +94,8 @@
                                                     <th>Título</th>
                                                     <th>Status</th>
                                                     <th>Imagem</th>
-                                                    <th>Conteúdo</th>
+                                                    <!-- <th>Conteúdo</th> -->
+                                                    <th>Data de publicação</th>
                                                     <th>Ações</th>
                                                 </tr>
                                             </thead>
@@ -109,7 +113,9 @@
                                                             @endif    
                                                         </td>
                                                         <td><img src="/storage/{{$foto->imagem}}" height="70" width="70"></td>
-                                                        <td>{!!$foto->texto!!}</td>
+                                                        <!-- <td>{!!$foto->texto!!}</td> -->
+                                                        <td>{{ \Carbon\Carbon::parse($foto->criado_em)->format('d/m/Y H:i:s')}}</td>
+
                                                         <td>
                                                             <a href="fotos/editar/{{$foto->id}}" class="btn btn-sm btn-primary">Editar</a>
                                                             <a href="fotos/apagar/{{$foto->id}}" class="btn btn-sm btn-danger">Apagar</a>

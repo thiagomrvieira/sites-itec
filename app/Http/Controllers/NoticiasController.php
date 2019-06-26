@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Noticia;
 use App\CategoriaNoticia;
+use Carbon\Carbon;
 
 class NoticiasController extends Controller
 {
@@ -47,11 +48,12 @@ class NoticiasController extends Controller
         $noticia->reporter = $request->input('reporter');
         $noticia->texto = $request->input('texto');
         $noticia->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
-        $noticia->user_id = 1;
         $noticia->status = $request->input('status');
         $noticia->destaque = $request->input('destaque');
+        $noticia->criado_em = \Carbon\Carbon::now();
+
         if ($request->hasFile('imagem')) {
-            $path = $request->file('imagem')->store('imgNews', 'public');
+            $path = $request->file('imagem')->store('imgNoticias', 'public');
             $noticia->imagem = $path;
             $noticia->autor_imagem = $request->input('autoria');
         }else{
@@ -108,12 +110,14 @@ class NoticiasController extends Controller
             $noticia->texto = $request->input('texto');
             $noticia->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
             $noticia->autor_imagem = $request->input('autoria');
-            $noticia->user_id = 1;
             $noticia->status = $request->input('status');
             $noticia->destaque = $request->input('destaque');
             if ($request->hasFile('imagem')) {
-                $path = $request->file('imagem')->store('imgNews', 'public');
+                $path = $request->file('imagem')->store('imgNoticias', 'public');
                 $noticia->imagem = $path;
+            }
+            if ($request->input('data')) { 
+                $noticia->criado_em = $request->input('data');
             }
             $noticia->save();
         }

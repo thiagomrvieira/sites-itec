@@ -18,6 +18,7 @@ class CreateVideosTable extends Migration
             $table->string('titulo');
             $table->string('subtitulo')->nullable();
             $table->string('link');
+            $table->dateTime('criado_em');	
             $table->timestamps();
         });
     }

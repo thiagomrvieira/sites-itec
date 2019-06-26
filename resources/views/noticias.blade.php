@@ -42,7 +42,7 @@
                                                     <th>Destaque</th>
                                                     <th>Categoria</th>
                                                     <th>Imagem</th>
-                                                    <th>Criado por</th>
+                                                    <th>Criado em</th>
                                                     <th>Ações</th>
                                                 </tr>
                                             </thead>
@@ -74,7 +74,8 @@
                                                             Sem imagem
                                                             @endif
                                                         </td>
-                                                        <td>{{$not->user->name}}</td>
+                                                        <td>{{ \Carbon\Carbon::parse($not->criado_em)->format('d/m/Y H:i:s')}}</td>
+
                                                         <td>
                                                             <a href="noticias/editar/{{$not->id}}" class="btn btn-sm btn-primary">Editar</a>
                                                             <a href="noticias/apagar/{{$not->id}}" class="btn btn-sm btn-danger">Apagar</a>
@@ -109,7 +110,7 @@
                                                     <th>Destaque</th>
                                                     <th>Categoria</th>
                                                     <th>Imagem</th>
-                                                    <th>Criado por</th>
+                                                    <th>Criado em</th>
                                                     <th>Ações</th>
                                                 </tr>
                                             </thead>
@@ -141,7 +142,8 @@
                                                             Sem imagem
                                                             @endif
                                                         </td>
-                                                        <td>{{$not->user->name}}</td>
+                                                        <td>{{ \Carbon\Carbon::parse($not->criado_em)->format('d/m/Y H:i:s')}}</td>
+
                                                         <td>
                                                             <a href="noticias/editar/{{$not->id}}" class="btn btn-sm btn-primary">Editar</a>
                                                             <a href="noticias/apagar/{{$not->id}}" class="btn btn-sm btn-danger">Apagar</a>
