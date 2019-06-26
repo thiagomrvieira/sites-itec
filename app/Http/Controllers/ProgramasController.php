@@ -84,7 +84,22 @@ class ProgramasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $programa = Programa::find($id);
+        if (isset($programa)) {
+            if($request->hasFile('imagem')) {
+                $path = $request->file('imagem')->store('imgProgramas', 'public');
+                $programa->imagem = $path;
+            }
+            $programa->titulo = $request->input('titulo');
+            $programa->texto = $request->input('texto');
+            $programa->status = $request->input('status');
+            $programa->user_id = auth()->user()->id;
+            $programa->status = $request->input('status');
+            $programa->save();
+        }
+        
+
+        return redirect('/programas');
     }
 
     /**
@@ -95,6 +110,12 @@ class ProgramasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $programa = Programa::find($id);
+        if (isset($programa)) {
+            $programa->delete();
+        }
+        
+
+        return redirect('/programas');
     }
 }

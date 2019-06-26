@@ -50,9 +50,11 @@
                                                     <tr>
                                                         <td>{{$prog->id}}</td>
                                                         <td>{{$prog->titulo}}</td>
-                                                        <td>{{$prog->imagem}}</td>
-                                                        <td>{{$prog->texto}}</td>
-                                                        <td>{{$prog->user_id}}</td>
+                                                        <td>
+                                                            <img src="storage/{{$prog->imagem}}" height="70" width="70">
+                                                        </td>
+                                                        <td>{!!$prog->texto!!}</td>
+                                                        <td>{{$prog->user->name}}</td>
                                                         
                                                         {{-- <td>{{$cat->noticias->count()}}</td> --}}
                                                         <td>
@@ -84,7 +86,7 @@
                                             
                                             <div class="form-group">
                                                 <label for="imagem">Imagem</label>
-                                                <input type='file' id="imagem" name="imagem">
+                                                <input type='file' id="imagem" name="imagem" required>
                                             </div>
                                             
                                             <div class="form-group">
