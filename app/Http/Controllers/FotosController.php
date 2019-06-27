@@ -39,6 +39,7 @@ class FotosController extends Controller
     {
         $foto = new Foto();
         $foto->titulo = $request->input('titulo');
+        $foto->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
         $foto->texto = $request->input('texto');
         $foto->status = $request->input('status');
         $path = $request->file('imagem')->store('imgFotos', 'public');
@@ -86,6 +87,7 @@ class FotosController extends Controller
         $foto = Foto::find($id);
         if (isset($foto)) {
             $foto->titulo = $request->input('titulo');
+            $foto->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
             $foto->texto = $request->input('texto');
             $foto->status = $request->input('status');
             if ($request->hasFile('imagem')) {
@@ -115,4 +117,19 @@ class FotosController extends Controller
         }
         return redirect('fotos');
     }
+
+    // API - - - - - - - - - - - - - - - - 
+    public function fotos()
+    {
+        $fotos = Foto::all();
+        return response()->json($fotos);
+    }
+
+
+    public function foto(Foto $slug)
+    {
+        return response()->json($slug);
+    }
+
+
 }

@@ -38,6 +38,7 @@ class VideosController extends Controller
     {
         $video = new Video();
         $video->titulo = $request->input('titulo');
+        $video->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
         $video->link = $request->input('link');
         $video->texto = $request->input('texto');
         $video->status = $request->input('status');
@@ -89,6 +90,7 @@ class VideosController extends Controller
         $video = Video::find($id);
         if (isset($video)) {
             $video->titulo = $request->input('titulo');
+            $video->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
             $video->texto = $request->input('texto');
             $video->status = $request->input('status');
             if ($request->hasFile('imagem')) {
@@ -120,4 +122,20 @@ class VideosController extends Controller
         return redirect('videos');
 
     }
+
+
+    // API - - - - - - - - - - - - - - - - 
+    public function videos()
+    {
+        $videos = Video::all();
+        return response()->json($videos);
+    }
+
+
+    public function video(Video $slug)
+    {
+        return response()->json($slug);
+    }
+
+
 }
