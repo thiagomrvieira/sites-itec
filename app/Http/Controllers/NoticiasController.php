@@ -140,4 +140,25 @@ class NoticiasController extends Controller
         }
         return redirect('/noticias');
     }
+
+
+
+    // API - - - - - - - - - - - - - - - - 
+    public function noticias()
+    {
+        $noticias = Noticia::all();
+        return response()->json($noticias);
+    }
+
+
+    public function noticia(Noticia $slug)
+    {
+        //$noticia = Noticia::find($slug);
+        //if (isset($noticia)){
+            return response()->json($slug);
+        //}
+    }
+
+
+
 }
