@@ -7,9 +7,9 @@
                 <i class="fas fa-laugh-wink"></i>
               </div> -->
               
-              <!-- <div class="sidebar-brand-text mx-3">Gov. Alagoas</div> -->
+              {{-- <div class="sidebar-brand-text mx-3">Gov. Alagoas</div> --}}
               <div class="sidebar-brand-text mx-3">
-                <img src="{{asset('img/texto.png')}}" height="45">
+                <img src="{{asset('img/texto-branco.png')}}" height="45">
               </div>
               
             </a>
