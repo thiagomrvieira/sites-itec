@@ -134,4 +134,25 @@ class DefinicoesController extends Controller
     {
         //
     }
+
+
+    // API ---------------
+
+    public function definicoes(){
+        $definicoes = Definicao::all();
+        return response()->json($definicoes);
+    }
+    
+    // public function telefone(){
+    //     $definicoes = Definicao::all();
+    //     $definicoes->makeHidden(['facebook', 'id']);
+    //     return response()->json($definicoes);
+    // }
+    // public function endereco(){
+
+    // }
+    // public function social(){
+
+    // }
+
 }
