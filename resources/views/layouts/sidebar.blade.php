@@ -99,9 +99,22 @@
               <i class="fas fa-exclamation-circle"></i>
               <span> Serviço de informação ao cidadão</span></a>
             </li>
-
             
-      
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            
+            <div class="sidebar-heading">
+              Configuração global
+            </div>
+
+            <!-- Nav Item - SIC -->
+            <li class="nav-item">
+              <a class="nav-link" href="/definicoes">
+              <i class="fas fa-cog"></i>
+              <span> Definições do site </span></a>
+            </li>
+    
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
       

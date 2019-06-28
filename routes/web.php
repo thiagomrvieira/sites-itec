@@ -88,6 +88,13 @@ Route::prefix('sic')->middleware('auth')->group(function(){
     
 });
 
+// -- DEFINIÇÕES DO SITE --
+Route::prefix('definicoes')->middleware('auth')->group(function(){
+    Route::get('/', 'DefinicoesController@index');
+    Route::post('/editar/{id}', 'DefinicoesController@update');
+    
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
