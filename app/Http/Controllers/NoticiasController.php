@@ -17,8 +17,9 @@ class NoticiasController extends Controller
     public function index()
     {
         $noticias = Noticia::all();
+        $categorias = CategoriaNoticia::all();
         
-        return view ('noticias', compact('noticias'));
+        return view ('noticias', compact('noticias', 'categorias'));
     }
 
     /**
@@ -29,7 +30,14 @@ class NoticiasController extends Controller
     public function create()
     {
         $categorias = CategoriaNoticia::all();
-        return view ('noticias-novo', compact('categorias'));
+        $count = CategoriaNoticia::all()->count();
+        if ($count > 0) {
+            return view ('noticias-novo', compact('categorias'));
+        } else {
+            return redirect ('noticias/categorias');
+        }
+        
+        
     }
 
     /**

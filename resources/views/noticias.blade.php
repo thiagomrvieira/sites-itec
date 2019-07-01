@@ -20,7 +20,12 @@
         
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-        
+                @if (count($categorias) < 1)
+                    <div class="alert alert-danger hidden" role="alert">
+                        <a href="/noticias/categorias" class="alert-link">Crie uma categoria</a>  antes de criar uma notícia.
+                    </div>
+                @endif
+                
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Notícias</h1>
