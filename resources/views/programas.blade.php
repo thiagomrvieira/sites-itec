@@ -41,7 +41,6 @@
                                                     <th>Título</th>
                                                     <th>Imagem</th>
                                                     <th>Texto</th>
-                                                    <th>Criado por</th>
                                                     <th>Ações</th>
                                                 </tr>
                                             </thead>
@@ -53,9 +52,7 @@
                                                         <td>
                                                             <img src="storage/{{$prog->imagem}}" height="70" width="70">
                                                         </td>
-                                                        <td>{!!$prog->texto!!}</td>
-                                                        <td>{{$prog->user->name}}</td>
-                                                        
+                                                        <td>{!!$prog->texto!!}</td>                                                        
                                                         {{-- <td>{{$cat->noticias->count()}}</td> --}}
                                                         <td>
                                                             <a href="programas/editar/{{$prog->id}}" class="btn btn-sm btn-primary">Editar</a>

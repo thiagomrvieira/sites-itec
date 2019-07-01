@@ -29,6 +29,12 @@ Route::get('v1/video/{slug}', 'VideosController@video')->middleware('cors');
 Route::get('v1/banners/', 'BannersController@banners')->middleware('cors');
 Route::get('v1/banner/{slug}', 'BannersController@banner')->middleware('cors');
 
+Route::get('v1/sic/', 'SicController@informacoes')->middleware('cors');
+Route::get('v1/sic/{slug}', 'SicController@informacao')->middleware('cors');
+
+Route::get('v1/programas/', 'ProgramasController@programas')->middleware('cors');
+Route::get('v1/programa/{slug}', 'ProgramasController@programa')->middleware('cors');
+
 Route::get('v1/definicoes/', 'DefinicoesController@definicoes')->middleware('cors');
 Route::get('v1/definicoes/telefone', 'DefinicoesController@telefone')->middleware('cors');
 Route::get('v1/definicoes/endereco', 'DefinicoesController@endereco')->middleware('cors');

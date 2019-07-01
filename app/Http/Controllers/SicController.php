@@ -89,6 +89,7 @@ class SicController extends Controller
         $sic = Sic::find($id);
         if (isset($sic)) {
             $sic->titulo = $request->input('titulo');
+            $sic->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
             $sic->texto = $request->input('texto');
             if ($request->hasFile('imagem')) {
                 $path = $request->file('imagem')->store('imgSic', 'public');
@@ -114,4 +115,24 @@ class SicController extends Controller
         }
         return redirect('sic');
     }
+
+
+
+
+     // API - - - - - - - - - - - - - - - - 
+     public function informacoes()
+     {
+        $sic = Sic::all();
+        return response()->json($sic);
+     }
+ 
+ 
+     public function informacao(Sic $slug)
+     {
+         //$noticia = Noticia::find($slug);
+         //if (isset($noticia)){
+             return response()->json($slug);
+         //}
+     }
+ 
 }

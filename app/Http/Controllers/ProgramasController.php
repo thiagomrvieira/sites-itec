@@ -41,9 +41,8 @@ class ProgramasController extends Controller
         $path = $request->file('imagem')->store('imgProgramas', 'public');
         $programa->imagem = $path;
         $programa->titulo = $request->input('titulo');
+        $programa->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
         $programa->texto = $request->input('texto');
-        $programa->status = $request->input('status');
-        $programa->user_id = auth()->user()->id;
         $programa->status = $request->input('status');
         $programa->save();
 
@@ -91,6 +90,7 @@ class ProgramasController extends Controller
                 $programa->imagem = $path;
             }
             $programa->titulo = $request->input('titulo');
+            $programa->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
             $programa->texto = $request->input('texto');
             $programa->status = $request->input('status');
             $programa->user_id = auth()->user()->id;
@@ -118,4 +118,21 @@ class ProgramasController extends Controller
 
         return redirect('/programas');
     }
+
+     // API - - - - - - - - - - - - - - - - 
+     public function programas()
+     {
+         $programas = Programa::all();
+         return response()->json($programas);
+     }
+ 
+ 
+     public function programa(Programa $slug)
+     {
+         //$noticia = Noticia::find($slug);
+         //if (isset($noticia)){
+             return response()->json($slug);
+         //}
+     }
+ 
 }
