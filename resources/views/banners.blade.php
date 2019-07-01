@@ -42,7 +42,6 @@
                                                     <th>Status</th>
                                                     <th>Imagem</th>
                                                     <th>Link</th>
-                                                    <th>Criado por</th>
                                                     <th>Ações</th>
                                                 </tr>
                                             </thead>
@@ -64,7 +63,6 @@
                                                             <img src="storage/{{$ban->imagem}}" height="70" width="70"> 
                                                         </td>
                                                         <td>{{$ban->link}}</td>
-                                                        <td>{{$ban->user->name}}</td>
                                                         <td>
                                                             <a href="banners/editar/{{$ban->id}}" class="btn btn-sm btn-primary">Editar</a>
                                                             <a href="banners/apagar/{{$ban->id}}" class="btn btn-sm btn-danger">Apagar</a>
@@ -98,7 +96,6 @@
                                                     <th>Status</th>
                                                     <th>Imagem</th>
                                                     <th>Link</th>
-                                                    <th>Criado por</th>
                                                     <th>Ações</th>
                                                 </tr>
                                             </thead>
@@ -120,7 +117,6 @@
                                                             <img src="storage/{{$ban->imagem}}" height="70" width="70"> 
                                                         </td>
                                                         <td>{{$ban->link}}</td>
-                                                        <td>{{$ban->user->name}}</td>
                                                         <td>
                                                             <a href="banners/editar/{{$ban->id}}" class="btn btn-sm btn-primary">Editar</a>
                                                             <a href="banners/apagar/{{$ban->id}}" class="btn btn-sm btn-danger">Apagar</a>

@@ -44,9 +44,9 @@ class BannersController extends Controller
             $banner->imagem_mbl = $path;
         }
         $banner->titulo = $request->input('titulo');
+        $banner->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
         $banner->subtitulo = $request->input('subtitulo');
         $banner->link = $request->input('link');
-        $banner->user_id = auth()->user()->id;
         $banner->status = $request->input('status');
         $banner->save();
 
@@ -99,6 +99,7 @@ class BannersController extends Controller
                 $banner->imagem_mbl = $path;
             }
             $banner->titulo = $request->input('titulo');
+            $banner->slug = str_replace(' ', '-', strtolower($request->input('titulo')));
             $banner->subtitulo = $request->input('subtitulo');
             $banner->link = $request->input('link');
             $banner->status = $request->input('status');
@@ -123,4 +124,25 @@ class BannersController extends Controller
         }
         return redirect('/banners');
     }
+
+    // API - - - - - - - - - - - - - - - - 
+    public function banners()
+    {
+        $banners = Banner::all();
+        return response()->json($banners);
+    }
+
+
+    public function banner(Banner $slug)
+    {
+        //$noticia = Noticia::find($slug);
+        //if (isset($noticia)){
+            return response()->json($slug);
+        //}
+    }
+
+
+
+
+
 }
